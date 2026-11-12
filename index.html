@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumit Chaurasiya — Portfolio</title>
+<style>
+:root{
+  --page:#09090b;--bar:rgba(9,9,11,.92);--card:rgba(24,24,27,.9);--card2:rgba(39,39,42,.7);
+  --line:#27272a;--line2:#3f3f46;--text:#f4f4f5;--sub:#d4d4d8;--muted:#a1a1aa;
+  --blue:#7dd3fc;--blueBg:rgba(14,165,233,.12);--blueLine:rgba(56,189,248,.35);
+  --green:#34d399;--greenBg:rgba(16,185,129,.12);--greenLine:rgba(52,211,153,.35);
+  --overlay:linear-gradient(rgba(9,9,11,.55),rgba(9,9,11,.45),rgba(9,9,11,.65));
+}
+html.light{
+  --page:#fafafa;--bar:rgba(250,250,250,.92);--card:rgba(255,255,255,.9);--card2:rgba(244,244,245,.9);
+  --line:#e4e4e7;--line2:#d4d4d8;--text:#18181b;--sub:#3f3f46;--muted:#71717a;
+  --blue:#0369a1;--blueBg:rgba(14,165,233,.1);--blueLine:rgba(2,132,199,.35);
+  --green:#047857;--greenBg:rgba(16,185,129,.1);--greenLine:rgba(5,150,105,.35);
+  --overlay:linear-gradient(rgba(250,250,250,.6),rgba(250,250,250,.5),rgba(250,250,250,.7));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--page);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* background */
+.sky{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(180deg,#05070f 0%,#0b1430 38%,#1b2448 62%,#3a2f4f 78%,#0b0b12 100%)}
+.sky canvas,.sky svg{position:absolute;left:0;right:0}
+.sky canvas{inset:0;width:100%;height:100%}
+.sky svg{bottom:0;width:100%;height:48vh}
+.sky .ov{position:absolute;inset:0;background:var(--overlay)}
+html.light .sky{opacity:.55}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:var(--bar);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:12px 0 8px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+.gdot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:p 2s infinite}
+@keyframes p{70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.actions{display:flex;align-items:center;gap:12px}
+.resume{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:8px;font-weight:600;font-size:14px;color:var(--blue);background:var(--blueBg);border:1px solid var(--blueLine)}
+.resume:hover{filter:brightness(1.2)}
+.sep{width:1px;height:24px;background:var(--line2)}
+.theme{width:38px;height:38px;border-radius:8px;border:1px solid var(--line);display:grid;place-items:center;background:var(--card)}
+.theme svg{width:18px;height:18px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;padding:7px 15px;border-radius:8px;font-size:14.5px;font-weight:500;color:var(--sub);background:var(--card);border:1px solid var(--line);transition:.15s}
+.tab:hover{border-color:var(--line2);color:var(--text)}
+.tab.on{color:var(--blue);background:var(--blueBg);border-color:var(--blueLine)}
+.tab.on::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-right:7px;vertical-align:middle}
+
+/* layout */
+main{padding:40px 0 60px}
+.view{display:none}
+.view.on{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stack>*+*{margin-top:18px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;backdrop-filter:blur(12px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.pad{padding:24px}
+.info{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;font-size:13px}
+.info .l{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-weight:600}
+.pill.g{color:var(--green);background:var(--greenBg);border:1px solid var(--greenLine)}
+.pill.b{color:var(--blue);background:var(--blueBg);border:1px solid var(--blueLine)}
+.ico{width:14px;height:14px;flex:none}
+.info .r{font-weight:600;color:var(--sub)}
+
+.hero{display:flex;gap:28px;align-items:flex-start;padding:30px}
+@media(max-width:700px){.hero{flex-direction:column;padding:22px}}
+.avatar{position:relative;flex:none;width:158px;height:158px;border-radius:12px;border:2px solid var(--line2);background:linear-gradient(135deg,#0ea5e9,#6366f1 55%,#a855f7);display:grid;place-items:center;font-size:56px;font-weight:800;color:#fff;letter-spacing:-.03em}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
+.avatar .on{position:absolute;right:-8px;bottom:-8px;width:20px;height:20px;border-radius:50%;background:#10b981;border:3px solid var(--page)}
+h1{font-size:clamp(32px,5vw,42px);line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.titles{font-size:20px;font-weight:600;color:var(--sub);margin-top:6px}
+.chiprole{margin-top:12px;font-size:14px}
+.focus{margin-top:12px;color:var(--muted);font-size:16px}
+.bio{margin-top:18px;color:var(--sub);font-size:16px}
+
+.metrics{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px}
+.metrics .t{font-size:14px;font-weight:600}
+.metrics .s{font-size:13px;color:var(--muted)}
+.mrow{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;padding:14px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;font-size:14px;font-weight:600;background:var(--card2);border:1px solid var(--line);transition:.15s}
+.btn:hover{border-color:var(--line2);transform:translateY(-1px)}
+.btn.pri{color:var(--blue);background:var(--blueBg);border-color:var(--blueLine)}
+.btn svg{width:16px;height:16px}
+
+.label{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+h2{font-size:24px;font-weight:800;letter-spacing:-.01em;margin-top:4px}
+h3{font-size:18px;font-weight:700}
+.sub{color:var(--muted);font-size:14px}
+.p{color:var(--sub);font-size:15px;margin-top:10px}
+ul.b{margin:10px 0 0 18px;color:var(--sub);font-size:15px}
+ul.b li{margin-bottom:6px}
+.row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.meta{font-size:13px;color:var(--muted);margin-top:4px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:12.5px;padding:3px 10px;border-radius:6px;background:var(--card2);border:1px solid var(--line);color:var(--sub);font-weight:500}
+.link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;font-weight:600;color:var(--blue)}
+.link:hover{text-decoration:underline}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:860px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;backdrop-filter:blur(12px);transition:.2s;display:flex;flex-direction:column}
+.card:hover{border-color:var(--line2);transform:translateY(-2px)}
+.card .kick{font-size:12px;color:var(--blue);font-weight:600;margin-top:2px}
+.card .p{flex:1}
+.dir .card{cursor:pointer}
+.open{margin-top:14px;font-size:13.5px;font-weight:600;color:var(--blue)}
+
+.stat{padding:18px}
+.stat .v{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.stat .l{font-size:13px;color:var(--muted)}
+.bar{height:8px;border-radius:99px;background:var(--card2);overflow:hidden;margin:6px 0 12px}
+.bar i{display:block;height:100%;border-radius:99px}
+.bl{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+
+.tl{position:relative;padding-left:24px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line2)}
+.tl .box{position:relative}
+.tl .box::before{content:"";position:absolute;left:-24px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--page);border:3px solid var(--blue)}
+
+.num{font-size:13px;font-weight:700;color:var(--blue);font-family:ui-monospace,Menlo,monospace;margin-bottom:6px}
+.quote{margin-top:8px;font-size:21px;font-weight:700;font-style:italic;border-left:3px solid var(--blue);padding-left:14px}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+@media(max-width:760px){.pipe{grid-template-columns:1fr 1fr}}
+.pipe div{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;background:var(--card2);border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--sub)}
+.pipe span{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:var(--blue);background:var(--blueBg);border:1px solid var(--blueLine)}
+.label.blue{color:var(--blue)}
+.pagehead{padding:30px}
+h2.big{font-size:clamp(28px,4.5vw,38px);margin-top:8px}
+.lead{color:var(--muted);font-size:17px;margin-top:6px}
+.pos{padding:28px}
+.pos-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.pos-l{display:flex;gap:14px;align-items:flex-start}
+.pos-ico{flex:none;width:40px;height:40px;border-radius:8px;background:#0284c7;color:#fff;display:grid;place-items:center}
+.pos-ico svg{width:22px;height:22px}
+.pos-t{font-size:22px;margin-top:2px}
+.pos-s{font-size:14.5px;font-weight:600;color:var(--sub);margin-top:2px}
+.pos-r{text-align:right}
+.datepill{display:inline-block;padding:4px 12px;border-radius:6px;font-size:14px;font-weight:700;background:var(--card2);border:1px solid var(--line2)}
+.div{border:0;border-top:1px solid var(--line);margin:18px 0}
+.checks{list-style:none;margin-top:16px}
+.checks li{display:flex;gap:10px;margin-bottom:12px;color:var(--sub);font-size:15.5px}
+.chk{flex:none;width:18px;height:18px;color:var(--green);margin-top:3px}
+.pos-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+@media(max-width:620px){.pos-r{text-align:left}}
+.copied{font-size:13px;color:var(--green);min-height:18px;padding:0 14px 12px}
+footer{border-top:1px solid var(--line);background:var(--bar);backdrop-filter:blur(12px);padding:22px 0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;font-size:13px;color:var(--muted)}
+footer b{color:var(--text);font-size:15px}
+footer .fl{display:flex;gap:14px;align-items:center}
+footer a:hover{color:var(--text)}
+@media(prefers-reduced-motion:reduce){.view.on{animation:none}.gdot{animation:none}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <canvas id="stars"></canvas>
+  <svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+    <path d="M0 260 L120 170 L210 230 L330 110 L450 210 L560 140 L700 240 L820 120 L940 200 L1060 90 L1180 190 L1300 130 L1440 210 V400 H0Z" fill="#141a2e"/>
+    <path d="M0 310 L150 230 L260 290 L400 200 L540 290 L680 220 L820 300 L980 210 L1120 290 L1260 230 L1440 290 V400 H0Z" fill="#0d1120"/>
+    <path d="M0 350 L180 300 L340 345 L520 290 L700 350 L880 300 L1060 350 L1240 310 L1440 345 V400 H0Z" fill="#07090f"/>
+  </svg>
+  <div class="ov"></div>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a href="#home" class="brand"><span class="gdot"></span>Sumit Chaurasiya</a>
+      <div class="actions">
+        <a class="resume" href="https://drive.google.com/file/d/14QqcUgaCq-gLKW33jXoBT_vs0CQj9FfX/preview" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>Resume ↗</a>
+        <span class="sep"></span>
+        <button class="theme" id="theme" aria-label="Toggle light and dark theme">
+          <svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <a class="tab" href="#home">Home</a>
+      <a class="tab" href="#about">About</a>
+      <a class="tab" href="#experience">Experience</a>
+      <a class="tab" href="#projects">Projects</a>
+      <a class="tab" href="#research">Research</a>
+      <a class="tab" href="#engineering">Engineering</a>
+      <a class="tab" href="#achievements">Achievements</a>
+      <a class="tab" href="#education">Education</a>
+      <a class="tab" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- HOME -->
+<section class="view stack" id="v-home">
+  <div class="box info">
+    <div class="l">
+      <span class="pill g">Available for SDE &amp; Full-Stack Internships</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;color:var(--sub)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Gorakhpur, Uttar Pradesh</span>
+    </div>
+    <div class="r">B.Tech Information Technology · MMMUT Gorakhpur · 2024–2028 · CGPA 7.5/10</div>
+  </div>
+
+  <div class="box hero">
+    <div class="avatar"><img src="sumit.jpg" alt="Sumit Chaurasiya"><span class="on"></span></div>
+    <div>
+      <h1>Sumit Chaurasiya</h1>
+      <div class="titles">Full-Stack Developer · Software Engineer · Competitive Programmer</div>
+      <div class="chiprole"><span class="pill b">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></svg>
+        Executive Member @ CSSE Society, MMMUT Gorakhpur</span></div>
+      <div class="focus">React · TypeScript · Node.js · PostgreSQL · MongoDB · Data Structures &amp; Algorithms</div>
+      <p class="bio">B.Tech IT student at Madan Mohan Malaviya University of Technology, building full-stack web applications with React, TypeScript, Node.js, Express, PostgreSQL and MongoDB. I've shipped an issue-resolution platform (ResolveHub) and a healthcare appointment system (MediCare Connect), and I've solved 600+ LeetCode problems with a 1,532 contest rating.</p>
+    </div>
+  </div>
+
+  <div class="box metrics">
+    <div><div class="t">Competitive Programming · LeetCode &amp; CodeChef</div><div class="s">600+ problems solved · 14 LeetCode contests</div></div>
+    <div class="mrow"><span class="pill g">1,532 LeetCode Rating</span><span class="pill b">CodeChef 2★ · 1,519</span></div>
+  </div>
+
+  <div class="box btnrow">
+    <a class="btn pri" href="https://drive.google.com/file/d/14QqcUgaCq-gLKW33jXoBT_vs0CQj9FfX/preview" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>View Resume</a>
+    <a class="btn" href="https://github.com/gitsumit7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/sumit-chaurasiya5154/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>LinkedIn</a>
+    <a class="btn" href="https://leetcode.com/u/sumit_739/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 0a1.4 1.4 0 0 0-1 .4L7 6.2l-.3.3-2.3 2.4a5.7 5.7 0 0 0-1.4 2.6 6 6 0 0 0 0 2.4c.2.9.6 1.7 1.2 2.4l4.4 4.7c1.3 1.4 3.2 2.1 5 2.1s3.5-.6 4.8-1.9l2.6-2.6a1.4 1.4 0 0 0-1.9-1.9l-2.6 2.6a4 4 0 0 1-5.8-.2L6.3 15c-.4-.5-.6-1-.7-1.5a3 3 0 0 1 .8-2.6L10.8 6l3.7-3.9A1.4 1.4 0 0 0 13.5 0zm-2.9 13.1a1.3 1.3 0 0 0 0 2.6h9.9a1.3 1.3 0 0 0 0-2.6h-9.9z"/></svg>LeetCode</a>
+    <a class="btn" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Email</a>
+  </div>
+
+  <div class="box pad">
+    <div class="label">Current Position</div>
+    <div class="row" style="margin-top:8px">
+      <div><h3>Frontend Development &amp; Academic Projects</h3><div class="sub">Independent / Academic Projects</div></div>
+      <div class="meta">2025 — Present · Gorakhpur, UP</div>
+    </div>
+    <p class="p">Building interactive, reusable web interfaces and full-stack apps with React, TypeScript and Node.js, using responsive mobile-first layouts and Git-based workflows.</p>
+    <div class="badges"><span class="tag">2 full-stack projects shipped</span><span class="tag">React + Node.js</span><span class="tag">Git &amp; GitHub</span></div>
+    <a class="link" href="#experience">Read full experience breakdown →</a>
+  </div>
+
+  <div>
+    <div class="label">02 / Active Directions</div>
+    <h2 style="margin-bottom:14px">Currently Building &amp; Learning</h2>
+    <div class="g2">
+      <div class="card"><h3>Full-Stack Web Apps</h3><div class="kick">End-to-End Products</div><p class="p">Complete web platforms with a React frontend, REST API backend and a relational or document database.</p><div class="badges"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Express</span></div></div>
+      <div class="card"><h3>Backend &amp; APIs</h3><div class="kick">Services &amp; Data</div><p class="p">REST APIs with controllers, auth middleware, secured routes, email notifications and file uploads.</p><div class="badges"><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span></div></div>
+      <div class="card"><h3>Frontend &amp; UI</h3><div class="kick">Responsive Interfaces</div><p class="p">Accessible, mobile-first interfaces with reusable components and global state management.</p><div class="badges"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Redux</span><span class="tag">Tailwind CSS</span></div></div>
+      <div class="card"><h3>Problem Solving</h3><div class="kick">DSA &amp; Contests</div><p class="p">Regular LeetCode and CodeChef contests, with 600+ problems across arrays, graphs, DP and more.</p><div class="badges"><span class="tag">C++</span><span class="tag">DSA</span><span class="tag">LeetCode</span><span class="tag">CodeChef</span></div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="label">Directory / Explore Portfolio</div>
+    <h2>Dedicated Section Pages</h2>
+    <p class="sub" style="margin:4px 0 14px">Explore projects, skills, achievements and academics on their own pages.</p>
+    <div class="g4 dir">
+      <a class="card" href="#about"><h3>About &amp; Profile</h3><div class="kick">Profile</div><p class="p">Who I am, what I build and how I work.</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#experience"><h3>Experience</h3><div class="kick">Work</div><p class="p">Frontend development and academic projects (2025 – Present).</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#projects"><h3>Projects</h3><div class="kick">Systems</div><p class="p">ResolveHub (TypeScript full-stack) and MediCare Connect (MERN).</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#research"><h3>Research &amp; Exploration</h3><div class="kick">Deep Dives</div><p class="p">Technical deep dives from my projects and the areas I'm exploring next.</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#engineering"><h3>Engineering &amp; Skills</h3><div class="kick">Stack</div><p class="p">Languages, frameworks, databases, tools and CS fundamentals.</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#achievements"><h3>Achievements</h3><div class="kick">Awards</div><p class="p">600+ LeetCode problems, CodeChef 2★, HackerRank certification.</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#education"><h3>Education &amp; Leadership</h3><div class="kick">Academics</div><p class="p">B.Tech IT @ MMMUT (CGPA 7.5/10) &amp; Executive Member @ CSSE.</p><div class="open">Open Page →</div></a>
+      <a class="card" href="https://drive.google.com/file/d/14QqcUgaCq-gLKW33jXoBT_vs0CQj9FfX/preview" target="_blank" rel="noopener"><h3>Resume</h3><div class="kick">Summary</div><p class="p">One-page view of my education, projects and skills.</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#contact"><h3>Get in Touch</h3><div class="kick">Connect</div><p class="p">Email, phone and social links.</p><div class="open">Open Page →</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="view stack" id="v-about">
+  <div class="box pad pagehead">
+    <div class="label blue">Page / About &amp; Profile</div>
+    <h2 class="big">About Me &amp; Current Position</h2>
+    <p class="lead">B.Tech IT student at MMMUT Gorakhpur building full-stack web applications, REST backends and responsive interfaces, with a strong base in DSA.</p>
+  </div>
+
+  <div class="box hero">
+    <div class="avatar"><img src="sumit.jpg" alt="Sumit Chaurasiya"><span class="on"></span></div>
+    <div>
+      <h1 style="font-size:32px">Sumit Chaurasiya</h1>
+      <div class="titles">Full-Stack Developer · Software Engineer · Competitive Programmer</div>
+      <div class="focus">React · TypeScript · Node.js · PostgreSQL · MongoDB · DSA</div>
+      <p class="bio">I turn real-world workflows, like tracking issues or booking a doctor's appointment, into clean, working web apps, from database schema to REST API to responsive UI.</p>
+    </div>
+  </div>
+
+  <div class="box pad pos">
+    <div class="pos-top">
+      <div class="pos-l">
+        <div class="pos-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l2.5 2L7 13M12 13h4"/></svg></div>
+        <div>
+          <div class="label blue" style="letter-spacing:.06em">Active Position</div>
+          <h3 class="pos-t">Frontend Development &amp; Academic Projects</h3>
+          <div class="pos-s">Independent / Academic Projects · MMMUT Gorakhpur</div>
+        </div>
+      </div>
+      <div class="pos-r"><span class="datepill">2025 — Present</span><div class="sub" style="font-size:13px;margin-top:6px">Gorakhpur, Uttar Pradesh</div></div>
+    </div>
+    <hr class="div">
+    <p class="p" style="font-size:16.5px">Currently working on <b>Frontend Development &amp; Full-Stack Academic Projects</b>, building interactive web interfaces, REST APIs with Node.js and Express, and database-backed applications with PostgreSQL and MongoDB.</p>
+    <ul class="checks">
+      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Developed interactive, reusable web interfaces and components using HTML5, CSS3, JavaScript and React.js, with responsive, mobile-first layouts.</span></li>
+      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Built <b>ResolveHub</b>, a full-stack TypeScript issue-resolution platform with a React + Vite frontend, Node.js REST API, auth middleware, PostgreSQL, email notifications and file uploads.</span></li>
+      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Built <b>MediCare Connect</b>, a MERN healthcare appointment system with secured REST APIs and Mongoose models linking patients, doctors and appointments.</span></li>
+      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Implemented DOM manipulation, event handling and debugging workflows, and used Git and GitHub for version control and publishing projects.</span></li>
+    </ul>
+    <hr class="div">
+    <div class="pos-foot">
+      <a class="link" style="margin-top:0" href="#experience">View Full Experience Timeline →</a>
+      <span class="pill b"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>2 Full-Stack Projects Shipped</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="label">01 / Technical Interests</div>
+    <h2 style="margin-bottom:14px">Core Areas of Focus</h2>
+    <div class="g4">
+      <div class="card"><div class="num">01.</div><h3>Full-Stack Web Development</h3><p class="p">React frontends, REST API backends and databases, built end to end.</p></div>
+      <div class="card"><div class="num">02.</div><h3>Backend &amp; REST APIs</h3><p class="p">Node.js, Express, controllers, auth middleware and secured routes.</p></div>
+      <div class="card"><div class="num">03.</div><h3>Databases &amp; Data Modelling</h3><p class="p">PostgreSQL schemas and MongoDB/Mongoose models with linked records.</p></div>
+      <div class="card"><div class="num">04.</div><h3>Frontend &amp; UI Engineering</h3><p class="p">React, Next.js, Redux, Tailwind CSS and reusable components.</p></div>
+      <div class="card"><div class="num">05.</div><h3>Responsive &amp; Accessible Design</h3><p class="p">Mobile-first layouts, SEO and accessibility best practices.</p></div>
+      <div class="card"><div class="num">06.</div><h3>Data Structures &amp; Algorithms</h3><p class="p">600+ LeetCode problems across graphs, DP, greedy and more.</p></div>
+      <div class="card"><div class="num">07.</div><h3>Competitive Programming</h3><p class="p">LeetCode rating 1,532 and CodeChef 2★ (max 1,519).</p></div>
+      <div class="card"><div class="num">08.</div><h3>CS Fundamentals</h3><p class="p">OOPs, DBMS, Operating Systems and Computer Networks.</p></div>
+    </div>
+  </div>
+
+  <div class="box pad">
+    <div class="label">Engineering Philosophy</div>
+    <div class="label" style="margin-top:14px;color:var(--blue)">Core Mindset</div>
+    <blockquote class="quote">“Code is valuable when it solves a real problem reliably.”</blockquote>
+    <p class="p">I like taking an idea through the whole lifecycle: understanding the problem, designing the data model, building clean APIs, crafting a responsive UI, and shipping something people can actually use.</p>
+    <div class="label" style="margin-top:22px">End-to-End Delivery Pipeline (Idea → Production)</div>
+    <div class="pipe">
+      <div><span>1</span>Problem Understanding</div>
+      <div><span>2</span>Data Modelling &amp; Schema</div>
+      <div><span>3</span>REST API &amp; Auth Layer</div>
+      <div><span>4</span>Frontend &amp; Components</div>
+      <div><span>5</span>State Management</div>
+      <div><span>6</span>Testing &amp; Debugging</div>
+      <div><span>7</span>Version Control &amp; Deploy</div>
+      <div><span>8</span>Real-World Use</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="view stack" id="v-experience">
+  <div><div class="label">02 / Experience</div><h2>Experience</h2></div>
+  <div class="tl">
+    <div class="box pad">
+      <div class="row"><div><h3>Frontend Development &amp; Academic Projects</h3><div class="sub">Independent / Academic Projects</div></div><div class="meta">2025 — Present · Gorakhpur, Uttar Pradesh</div></div>
+      <ul class="b">
+        <li>Developed interactive, reusable web interfaces and components using HTML5, CSS3 and JavaScript.</li>
+        <li>Built responsive, mobile-first layouts and implemented DOM manipulation, event handling and debugging workflows.</li>
+        <li>Used Git and GitHub for version control, code management and publishing projects.</li>
+      </ul>
+      <div class="badges"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Git</span></div>
+    </div>
+  </div>
+  <div class="tl">
+    <div class="box pad">
+      <div class="row"><div><h3>Executive Member — CSSE Society</h3><div class="sub">Madan Mohan Malaviya University of Technology</div></div><div class="meta">2025 — Present · Gorakhpur</div></div>
+      <ul class="b"><li>Contributed to organising technical society activities, events and collaborative student initiatives.</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="view stack" id="v-projects">
+  <div><div class="label">03 / Projects</div><h2>Engineering Projects</h2></div>
+  <div class="box pad">
+    <div class="row"><div><h3>ResolveHub — Issue Resolution Platform</h3><div class="sub">Full-stack TypeScript platform</div></div><span class="pill b">Full-Stack</span></div>
+    <ul class="b">
+      <li>Built a full-stack TypeScript platform for raising, tracking and resolving issues, with a React.js + Vite frontend and a Node.js REST API backend.</li>
+      <li>Structured the backend into controllers and authentication middleware, backed by PostgreSQL with scripts for schema initialisation and user setup.</li>
+      <li>Implemented email notifications and file uploads, with environment-based configuration for secure handling of credentials.</li>
+      <li>Designed a responsive UI with Tailwind CSS and reusable components, using React Context API for global state management.</li>
+    </ul>
+    <div class="badges"><span class="tag">React.js</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">Tailwind CSS</span></div>
+    <a class="link" href="https://github.com/gitsumit7" target="_blank" rel="noopener">View on GitHub ↗</a>
+  </div>
+  <div class="box pad">
+    <div class="row"><div><h3>MediCare Connect — Healthcare Appointment System</h3><div class="sub">MERN stack platform</div></div><span class="pill b">MERN</span></div>
+    <ul class="b">
+      <li>Built a full-stack MERN healthcare platform where patients can register, discover doctors and book appointments online.</li>
+      <li>Engineered RESTful APIs with Node.js and Express.js covering authentication, secured routes, doctor listings and appointment scheduling.</li>
+      <li>Designed MongoDB models with Mongoose for patient profiles, doctor availability and appointments, linking each appointment to its patient and doctor.</li>
+      <li>Developed a responsive React.js frontend for doctor search, registration and booking, integrated through REST API calls.</li>
+    </ul>
+    <div class="badges"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span></div>
+    <a class="link" href="https://github.com/gitsumit7" target="_blank" rel="noopener">View on GitHub ↗</a>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="view stack" id="v-research">
+  <div><div class="label">04 / Research</div><h2>Research &amp; Exploration</h2>
+  <p class="sub" style="margin-top:4px">Technical deep dives from what I've built, and the areas I'm studying next.</p></div>
+
+  <div class="box pad">
+    <div class="row"><div><h3>Designing a Secure Issue-Resolution Backend</h3><div class="sub">Case study · ResolveHub</div></div><span class="pill b">Backend Architecture</span></div>
+    <ul class="b">
+      <li><b>Question:</b> How should a small team structure an Express backend so that auth, business logic and data access stay separate?</li>
+      <li><b>Approach:</b> Split the API into controllers and authentication middleware, with PostgreSQL schema-init and user-setup scripts so any environment can be rebuilt the same way.</li>
+      <li><b>Findings:</b> Environment-based configuration kept credentials out of code, and middleware-level auth meant protected routes needed no repeated checks.</li>
+    </ul>
+    <div class="badges"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">Auth Middleware</span></div>
+  </div>
+
+  <div class="box pad">
+    <div class="row"><div><h3>Data Modelling for Appointment Scheduling</h3><div class="sub">Case study · MediCare Connect</div></div><span class="pill b">Data Modelling</span></div>
+    <ul class="b">
+      <li><b>Question:</b> How do you model patients, doctors and appointments in a document database without losing the relationships between them?</li>
+      <li><b>Approach:</b> Designed Mongoose schemas for patient profiles, doctor availability and appointment records, with each appointment referencing its patient and doctor.</li>
+      <li><b>Findings:</b> Reference-based links kept documents small and made "my appointments" and "doctor schedule" queries straightforward.</li>
+    </ul>
+    <div class="badges"><span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">REST APIs</span></div>
+  </div>
+
+  <div>
+    <div class="label">Areas I'm Exploring</div>
+    <div class="g3" style="margin-top:12px">
+      <div class="card"><h3>Algorithms &amp; Problem Solving</h3><p class="p">Graph algorithms, dynamic programming and greedy techniques through 600+ LeetCode problems and weekly contests.</p><div class="badges"><span class="tag">DSA</span><span class="tag">C++</span></div></div>
+      <div class="card"><h3>System Design</h3><p class="p">Scaling REST backends: caching, database indexing, and how to split a monolith into services.</p><div class="badges"><span class="tag">Architecture</span><span class="tag">Databases</span></div></div>
+      <div class="card"><h3>Web Performance &amp; Accessibility</h3><p class="p">Mobile-first layouts, SEO and accessible components that work for every user.</p><div class="badges"><span class="tag">Next.js</span><span class="tag">A11y</span><span class="tag">SEO</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGINEERING -->
+<section class="view stack" id="v-engineering">
+  <div><div class="label">05 / Engineering</div><h2>Skills &amp; Stack</h2></div>
+  <div class="g3">
+    <div class="card"><h3>Languages</h3><div class="badges"><span class="tag">C</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">SQL</span><span class="tag">Python</span></div></div>
+    <div class="card"><h3>Frameworks &amp; Libraries</h3><div class="badges"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Redux</span><span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span><span class="tag">Flutter</span></div></div>
+    <div class="card"><h3>Backend &amp; Databases</h3><div class="badges"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">REST APIs</span><span class="tag">Authentication</span></div></div>
+    <div class="card"><h3>Web Technologies</h3><div class="badges"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Responsive Design</span><span class="tag">Mobile-First</span><span class="tag">SEO</span><span class="tag">Accessibility</span></div></div>
+    <div class="card"><h3>Developer Tools</h3><div class="badges"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">AI-Assisted Dev Tools</span></div></div>
+    <div class="card"><h3>CS Fundamentals</h3><div class="badges"><span class="tag">DSA</span><span class="tag">OOPs</span><span class="tag">DBMS</span><span class="tag">Operating Systems</span><span class="tag">Computer Networks</span></div></div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="view stack" id="v-achievements">
+  <div><div class="label">06 / Achievements</div><h2>Honors &amp; Achievements</h2></div>
+  <div class="g4">
+    <div class="box stat"><div class="v">600+</div><div class="l">LeetCode problems</div></div>
+    <div class="box stat"><div class="v">1,532</div><div class="l">LeetCode rating · 14 contests</div></div>
+    <div class="box stat"><div class="v">2★</div><div class="l">CodeChef · max 1,519</div></div>
+    <div class="box stat"><div class="v">23,742</div><div class="l">CodeChef global rank</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <h3>LeetCode</h3><div class="kick">601 problems solved</div>
+      <div style="margin-top:14px">
+        <div class="bl"><span>Easy</span><span>259</span></div><div class="bar"><i style="width:43%;background:#34d399"></i></div>
+        <div class="bl"><span>Medium</span><span>301</span></div><div class="bar"><i style="width:50%;background:#fbbf24"></i></div>
+        <div class="bl"><span>Hard</span><span>41</span></div><div class="bar"><i style="width:7%;background:#f87171"></i></div>
+      </div>
+      <a class="link" href="https://leetcode.com/u/sumit_739/" target="_blank" rel="noopener">View LeetCode profile ↗</a>
+    </div>
+    <div class="card">
+      <h3>Certifications &amp; Ratings</h3>
+      <ul class="b">
+        <li><b>HackerRank Software Engineer Intern Certification</b> (Oct 2026): passed the role test on software engineering fundamentals.</li>
+        <li><b>CodeChef 2-Star</b> coder, highest rating 1,519 (Div. 3), global rank 23,742.</li>
+        <li><b>LeetCode</b> contest rating 1,532 across 14 contests.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="view stack" id="v-education">
+  <div><div class="label">07 / Education</div><h2>Education &amp; Leadership</h2></div>
+  <div class="tl">
+    <div class="box pad">
+      <div class="row"><div><h3>Madan Mohan Malaviya University of Technology</h3><div class="sub">Bachelor of Technology in Information Technology</div></div><div class="meta">2024 — Present · Gorakhpur, UP</div></div>
+      <div class="badges"><span class="pill g">CGPA 7.5 / 10</span></div>
+      <p class="p">Coursework: Data Structures &amp; Algorithms, OOPs, DBMS, Operating Systems, Computer Networks.</p>
+    </div>
+  </div>
+  <div class="tl">
+    <div class="box pad">
+      <div class="row"><div><h3>Executive Member — CSSE Society</h3><div class="sub">MMMUT Gorakhpur</div></div><div class="meta">2025 — Present</div></div>
+      <p class="p">Help organise technical society activities, events and collaborative student initiatives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section class="view stack" id="v-resume">
+  <div><div class="label">Resume</div><h2>Resume Summary</h2></div>
+  <div class="box pad">
+    <h3>Sumit Chaurasiya</h3>
+    <div class="sub">B.Tech IT · MMMUT Gorakhpur · CGPA 7.5/10 · 2024 – Present</div>
+    <ul class="b">
+      <li><b>Projects:</b> ResolveHub (React, TypeScript, Node.js, PostgreSQL) · MediCare Connect (MERN)</li>
+      <li><b>Experience:</b> Frontend Development &amp; Academic Projects, 2025 – Present</li>
+      <li><b>Skills:</b> C, C++, JavaScript, TypeScript, SQL, Python · React, Next.js, Redux, Tailwind · Node.js, Express, PostgreSQL, MongoDB</li>
+      <li><b>Achievements:</b> 600+ LeetCode problems (rating 1,532) · CodeChef 2★ (1,519) · HackerRank SE Intern certification</li>
+      <li><b>Leadership:</b> Executive Member, CSSE Society</li>
+    </ul>
+    <p class="sub" style="margin-top:14px"><a class="link" href="https://drive.google.com/file/d/14QqcUgaCq-gLKW33jXoBT_vs0CQj9FfX/preview" target="_blank" rel="noopener">Open full PDF resume on Google Drive ↗</a></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="view stack" id="v-contact">
+  <div><div class="label">08 / Contact</div><h2>Get in Touch</h2></div>
+  <div class="box pad">
+    <p class="p" style="margin-top:0">I'm open to SDE and full-stack internship roles. Email is the best way to reach me.</p>
+    <div class="g2" style="margin-top:16px">
+      <div class="card"><div class="sub">Email</div><h3 style="word-break:break-all">sumitchaurasiya5154@gmail.com</h3><button class="link" id="copyBtn" type="button" style="text-align:left">Copy email</button><div class="copied" id="copied" style="padding:6px 0 0"></div></div>
+      <div class="card"><div class="sub">Phone</div><h3>+91 73929 25816</h3><div class="sub" style="margin-top:6px">Gorakhpur, Uttar Pradesh</div></div>
+    </div>
+  </div>
+  <div class="box btnrow">
+    <a class="btn" href="https://github.com/gitsumit7" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="btn" href="https://www.linkedin.com/in/sumit-chaurasiya5154/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn" href="https://leetcode.com/u/sumit_739/" target="_blank" rel="noopener">LeetCode ↗</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Sumit Chaurasiya</b><div>Full-Stack Developer · Software Engineer · Competitive Programmer</div></div>
+    <div class="fl">
+      <a href="https://github.com/gitsumit7" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/sumit-chaurasiya5154/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#contact">Email</a><span>|</span><span>© 2026 Sumit Chaurasiya</span>
+      <a href="#home">Top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const c=document.getElementById('stars'),x=c.getContext('2d');
+  function draw(){
+    const d=window.devicePixelRatio||1,w=innerWidth,h=innerHeight;
+    c.width=w*d;c.height=h*d;x.setTransform(d,0,0,d,0,0);x.clearRect(0,0,w,h);
+    let s=7;const r=()=>(s=(s*9301+49297)%233280)/233280;
+    for(let i=0;i<Math.round(w*h/2600);i++){
+      const px=r()*w,py=r()*h*.75,rad=r()*1.3+.2;
+      x.globalAlpha=.35+r()*.65;x.fillStyle=r()>.9?'#cfe0ff':'#fff';
+      x.beginPath();x.arc(px,py,rad,0,6.283);x.fill();
+    }
+    x.globalAlpha=1;
+  }
+  draw();addEventListener('resize',draw);
+
+  const views=['home','about','experience','projects','research','engineering','achievements','education','resume','contact'];
+  function route(){
+    let v=location.hash.replace('#','');if(!views.includes(v))v='home';
+    document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.getAttribute('href')==='#'+v));
+    window.scrollTo(0,0);
+  }
+  addEventListener('hashchange',route);route();
+
+  const root=document.documentElement;
+  try{if(localStorage.getItem('theme')==='light')root.classList.add('light')}catch(e){}
+  document.getElementById('theme').addEventListener('click',()=>{
+    root.classList.toggle('light');
+    try{localStorage.setItem('theme',root.classList.contains('light')?'light':'dark')}catch(e){}
+  });
+
+  document.getElementById('copyBtn').addEventListener('click',async()=>{
+    const o=document.getElementById('copied');
+    try{await navigator.clipboard.writeText('sumitchaurasiya5154@gmail.com');o.textContent='Email copied!'}
+    catch(e){o.textContent='Copy failed — select the email above.'}
+  });
+})();
+</script>
+</body>
+</html>
