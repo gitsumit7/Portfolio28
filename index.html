@@ -35,7 +35,11 @@ html.light .sky{opacity:.55}
 
 /* header */
 header{position:sticky;top:0;z-index:50;background:var(--bar);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+body{zoom:1.15;display:flex;flex-direction:column;min-height:calc(100vh / 1.15)}
+main{flex:1 0 auto;width:100%}
+header,footer{width:100%}
+footer{margin-top:auto}
+.wrap{max-width:none;width:100%;margin:0;padding:0 clamp(16px,3vw,48px)}
 .top{display:flex;align-items:center;justify-content:space-between;padding:12px 0 8px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
 .gdot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:p 2s infinite}
@@ -154,6 +158,9 @@ h2.big{font-size:clamp(28px,4.5vw,38px);margin-top:8px}
 .chk{flex:none;width:18px;height:18px;color:var(--green);margin-top:3px}
 .pos-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 @media(max-width:620px){.pos-r{text-align:left}}
+.card.mini{background:var(--card2)}
+.card.mini h3{font-size:16.5px}
+.card.mini .p{font-size:14px}
 .copied{font-size:13px;color:var(--green);min-height:18px;padding:0 14px 12px}
 footer{border-top:1px solid var(--line);background:var(--bar);backdrop-filter:blur(12px);padding:22px 0}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;font-size:13px;color:var(--muted)}
@@ -240,14 +247,14 @@ footer a:hover{color:var(--text)}
   </div>
 
   <div class="box pad">
-    <div class="label">Current Position</div>
-    <div class="row" style="margin-top:8px">
-      <div><h3>Frontend Development &amp; Academic Projects</h3><div class="sub">Independent / Academic Projects</div></div>
-      <div class="meta">2025 — Present · Gorakhpur, UP</div>
+    <div class="row">
+      <div><h3>Anubhav — Interview Experience Hub</h3><div class="sub">MMMUT Placement Interview Experience Portal · Academic / Independent Project</div></div>
+      <div class="meta">Gorakhpur, UP</div>
     </div>
-    <p class="p">Building interactive, reusable web interfaces and full-stack apps with React, TypeScript and Node.js, using responsive mobile-first layouts and Git-based workflows.</p>
-    <div class="badges"><span class="tag">2 full-stack projects shipped</span><span class="tag">React + Node.js</span><span class="tag">Git &amp; GitHub</span></div>
-    <a class="link" href="#experience">Read full experience breakdown →</a>
+    <p class="p">A college portal where seniors record detailed, <b>round-wise placement interview experiences</b>, posts go through an admin review step before going public, and juniors learn what was asked, how to prepare and which mistakes to avoid. A personal project, not an official MMMUT or T&amp;P website.</p>
+    <p class="p">Built with <b>vanilla JavaScript, Firebase Authentication and Cloud Firestore</b>: college-email login, a 7-step submission form, an admin review queue, 9-filter search, company pages, auto-generated prep roadmaps and a placement statistics dashboard, secured by Firestore rules.</p>
+    <div class="badges"><span class="tag">7-step form</span><span class="tag">Admin review</span><span class="tag">118 recruiters</span><span class="tag">Firebase</span><span class="tag">Vanilla JS</span></div>
+    <a class="link" href="#projects">View project details →</a>
   </div>
 
   <div>
@@ -267,8 +274,8 @@ footer a:hover{color:var(--text)}
     <p class="sub" style="margin:4px 0 14px">Explore projects, skills, achievements and academics on their own pages.</p>
     <div class="g4 dir">
       <a class="card" href="#about"><h3>About &amp; Profile</h3><div class="kick">Profile</div><p class="p">Who I am, what I build and how I work.</p><div class="open">Open Page →</div></a>
-      <a class="card" href="#experience"><h3>Experience</h3><div class="kick">Work</div><p class="p">Frontend development and academic projects (2025 – Present).</p><div class="open">Open Page →</div></a>
-      <a class="card" href="#projects"><h3>Projects</h3><div class="kick">Systems</div><p class="p">ResolveHub (TypeScript full-stack) and MediCare Connect (MERN).</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#experience"><h3>Experience</h3><div class="kick">Work</div><p class="p">Anubhav — Interview Experience Hub, HackerRank certification and CSSE Society.</p><div class="open">Open Page →</div></a>
+      <a class="card" href="#projects"><h3>Projects</h3><div class="kick">Systems</div><p class="p">Anubhav (Interview Experience Hub), ResolveHub and MediCare Connect.</p><div class="open">Open Page →</div></a>
       <a class="card" href="#research"><h3>Research &amp; Exploration</h3><div class="kick">Deep Dives</div><p class="p">Technical deep dives from my projects and the areas I'm exploring next.</p><div class="open">Open Page →</div></a>
       <a class="card" href="#engineering"><h3>Engineering &amp; Skills</h3><div class="kick">Stack</div><p class="p">Languages, frameworks, databases, tools and CS fundamentals.</p><div class="open">Open Page →</div></a>
       <a class="card" href="#achievements"><h3>Achievements</h3><div class="kick">Awards</div><p class="p">600+ LeetCode problems, CodeChef 2★, HackerRank certification.</p><div class="open">Open Page →</div></a>
@@ -283,7 +290,7 @@ footer a:hover{color:var(--text)}
 <section class="view stack" id="v-about">
   <div class="box pad pagehead">
     <div class="label blue">Page / About &amp; Profile</div>
-    <h2 class="big">About Me &amp; Current Position</h2>
+    <h2 class="big">About Me &amp; Profile</h2>
     <p class="lead">B.Tech IT student at MMMUT Gorakhpur building full-stack web applications, REST backends and responsive interfaces, with a strong base in DSA.</p>
   </div>
 
@@ -302,25 +309,40 @@ footer a:hover{color:var(--text)}
       <div class="pos-l">
         <div class="pos-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l2.5 2L7 13M12 13h4"/></svg></div>
         <div>
-          <div class="label blue" style="letter-spacing:.06em">Active Position</div>
-          <h3 class="pos-t">Frontend Development &amp; Academic Projects</h3>
-          <div class="pos-s">Independent / Academic Projects · MMMUT Gorakhpur</div>
+
+          <h3 class="pos-t">Anubhav — Interview Experience Hub</h3>
+          <div class="pos-s">MMMUT Placement Interview Experience Portal · Academic / Independent Project</div>
         </div>
       </div>
-      <div class="pos-r"><span class="datepill">2025 — Present</span><div class="sub" style="font-size:13px;margin-top:6px">Gorakhpur, Uttar Pradesh</div></div>
+      <div class="pos-r"><div class="sub" style="font-size:13px">Gorakhpur, Uttar Pradesh</div></div>
     </div>
     <hr class="div">
-    <p class="p" style="font-size:16.5px">Currently working on <b>Frontend Development &amp; Full-Stack Academic Projects</b>, building interactive web interfaces, REST APIs with Node.js and Express, and database-backed applications with PostgreSQL and MongoDB.</p>
-    <ul class="checks">
-      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Developed interactive, reusable web interfaces and components using HTML5, CSS3, JavaScript and React.js, with responsive, mobile-first layouts.</span></li>
-      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Built <b>ResolveHub</b>, a full-stack TypeScript issue-resolution platform with a React + Vite frontend, Node.js REST API, auth middleware, PostgreSQL, email notifications and file uploads.</span></li>
-      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Built <b>MediCare Connect</b>, a MERN healthcare appointment system with secured REST APIs and Mongoose models linking patients, doctors and appointments.</span></li>
-      <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Implemented DOM manipulation, event handling and debugging workflows, and used Git and GitHub for version control and publishing projects.</span></li>
-    </ul>
+    <p class="p" style="font-size:16.5px">Currently building <b>Anubhav</b>, a portal where seniors share round-wise placement interview experiences, an admin reviews each post before it goes public, and juniors learn what was asked and how to prepare.</p>
+    <div class="g3" style="margin-top:16px">
+      <div class="card mini">
+        <div class="num">01 · Firebase</div>
+        <h3>Anubhav — Interview Experience Hub</h3>
+        <p class="p">Placement interview-experience portal for MMMUT: college-email login, a 7-step submission form, admin review queue, 9-filter search, company pages, prep roadmaps and placement statistics.</p>
+        <div class="badges"><span class="tag">Vanilla JS</span><span class="tag">Firebase Auth</span><span class="tag">Firestore</span></div>
+      </div>
+      <div class="card mini">
+        <div class="num">02 · Full-Stack TS</div>
+        <h3>ResolveHub</h3>
+        <p class="p">Issue-resolution platform with a React + Vite frontend, Node.js REST API, auth middleware, PostgreSQL, email notifications and file uploads.</p>
+        <div class="badges"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span></div>
+      </div>
+      <div class="card mini">
+        <div class="num">03 · MERN</div>
+        <h3>MediCare Connect</h3>
+        <p class="p">Healthcare appointment system with secured REST APIs and Mongoose models linking patients, doctors and appointments.</p>
+        <div class="badges"><span class="tag">React</span><span class="tag">Express</span><span class="tag">MongoDB</span></div>
+      </div>
+    </div>
+    <p class="p" style="margin-top:14px">All three use responsive, mobile-first interfaces built from reusable components, and each is secured (Firestore rules, auth middleware, protected routes), version-controlled and published on GitHub.</p>
     <hr class="div">
     <div class="pos-foot">
       <a class="link" style="margin-top:0" href="#experience">View Full Experience Timeline →</a>
-      <span class="pill b"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>2 Full-Stack Projects Shipped</span>
+      <span class="pill b"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>3 Projects Shipped</span>
     </div>
   </div>
 
@@ -363,6 +385,19 @@ footer a:hover{color:var(--text)}
   <div><div class="label">02 / Experience</div><h2>Experience</h2></div>
   <div class="tl">
     <div class="box pad">
+      <div class="row"><div><h3>Anubhav — Interview Experience Hub</h3><div class="sub">MMMUT Placement Interview Experience Portal · Academic / Independent Project</div></div><div class="meta">Gorakhpur, Uttar Pradesh</div></div>
+      <ul class="b">
+        <li>Developed interactive, reusable web interfaces and components using HTML5, CSS3, JavaScript and React.js, with responsive, mobile-first layouts.</li>
+        <li>Built <b>Anubhav — Interview Experience Hub</b>, a placement interview-experience portal for MMMUT with college-email login, a 7-step submission form, an admin review queue, 9-filter search, company pages, prep roadmaps and placement statistics (Firebase Auth, Cloud Firestore).</li>
+        <li>Built <b>ResolveHub</b>, a full-stack TypeScript issue-resolution platform (React + Vite, Node.js REST API, auth middleware, PostgreSQL, email notifications, file uploads).</li>
+        <li>Built <b>MediCare Connect</b>, a MERN healthcare appointment system with secured REST APIs and Mongoose models linking patients, doctors and appointments.</li>
+        <li>Secured all three projects: Firestore security rules and college-email checks in <b>Anubhav</b>, authentication middleware in <b>ResolveHub</b>, and protected REST routes in <b>MediCare Connect</b>, with each project version-controlled and published on GitHub.</li>
+      </ul>
+      <div class="badges"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Firebase</span><span class="tag">Git</span></div>
+    </div>
+  </div>
+  <div class="tl">
+    <div class="box pad">
       <div class="row"><div><h3>HackerRank Software Engineer Intern Certification</h3><div class="sub">HackerRank · Role Certification</div></div><div class="meta">Oct 2026 · Online</div></div>
       <ul class="b">
         <li>Passed HackerRank's Software Engineer Intern role certification test, which assesses software engineering fundamentals.</li>
@@ -382,6 +417,18 @@ footer a:hover{color:var(--text)}
 <!-- PROJECTS -->
 <section class="view stack" id="v-projects">
   <div><div class="label">03 / Projects</div><h2>Engineering Projects</h2></div>
+  <div class="box pad">
+    <div class="row"><div><h3>Anubhav — Interview Experience Hub</h3><div class="sub">MMMUT placement interview-experience portal</div></div><span class="pill b">Firebase · Vanilla JS</span></div>
+    <ul class="b">
+      <li>Built a college portal where seniors record detailed, <b>round-wise placement interview experiences</b> that pass an admin review before going public, so juniors know what was asked and how to prepare.</li>
+      <li>Implemented <b>college-email sign-up</b> with Firebase Authentication and a <b>7-step submission form</b> (Background → Preparation → Rounds → Mistakes → Resume → HR &amp; Offer → Advice) with dynamic rounds, auto-saved drafts, per-step validation and preview.</li>
+      <li>Built search with <b>9 filters</b>, company pages, an auto-generated 8-week preparation roadmap, a question bank, a Selected-vs-Rejected comparison and a <b>placement statistics</b> dashboard that uses only reviewed data. Built as a personal project; not an official MMMUT or T&amp;P website.</li>
+      <li>Created an <b>admin panel</b> with a review queue, management of drives, notices and companies, bulk Excel/CSV upload, editable site settings and JSON backup, plus a directory of <b>118 recruiters</b>.</li>
+      <li>Secured data with <b>Cloud Firestore rules</b> enforcing roles, field limits and the college-email domain, and HTML-escaped all user text. Responsive, mobile-first UI with dark and light modes.</li>
+    </ul>
+    <div class="badges"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Firebase Auth</span><span class="tag">Cloud Firestore</span><span class="tag">GitHub Pages</span></div>
+    <a class="link" href="https://github.com/gitsumit7" target="_blank" rel="noopener">View on GitHub ↗</a>
+  </div>
   <div class="box pad">
     <div class="row"><div><h3>ResolveHub — Issue Resolution Platform</h3><div class="sub">Full-stack TypeScript platform</div></div><span class="pill b">Full-Stack</span></div>
     <ul class="b">
@@ -510,7 +557,7 @@ footer a:hover{color:var(--text)}
     <div class="sub">B.Tech IT · MMMUT Gorakhpur · CGPA 7.5/10 · 2024 – Present</div>
     <ul class="b">
       <li><b>Projects:</b> ResolveHub (React, TypeScript, Node.js, PostgreSQL) · MediCare Connect (MERN)</li>
-      <li><b>Experience:</b> Frontend Development &amp; Academic Projects, 2025 – Present</li>
+      <li><b>Experience:</b> Anubhav — Interview Experience Hub (Academic / Independent Project)</li>
       <li><b>Skills:</b> C, C++, JavaScript, TypeScript, SQL, Python · React, Next.js, Redux, Tailwind · Node.js, Express, PostgreSQL, MongoDB</li>
       <li><b>Achievements:</b> 600+ LeetCode problems (rating 1,532) · CodeChef 2★ (1,519) · HackerRank SE Intern certification</li>
       <li><b>Leadership:</b> Executive Member, CSSE Society</li>
