@@ -161,6 +161,28 @@ h2.big{font-size:clamp(28px,4.5vw,38px);margin-top:8px}
 .card.mini{background:var(--card2)}
 .card.mini h3{font-size:16.5px}
 .card.mini .p{font-size:14px}
+.arch{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:18px;margin-top:16px}
+@media(max-width:760px){.arch{grid-template-columns:1fr}}
+.tiers{display:flex;flex-direction:column;gap:6px}
+.tier{text-align:left;padding:9px 12px;border-radius:8px;background:var(--card2);border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--sub)}
+.tier:hover{border-color:var(--line2)}
+.tier.on{color:var(--blue);background:var(--blueBg);border-color:var(--blueLine)}
+.tierbox{padding:20px;border-radius:10px;background:var(--card2);border:1px solid var(--line)}
+.cs{padding:16px;border-radius:10px;background:var(--card2);border:1px solid var(--line)}
+.cs h3{font-size:16px}
+.edu{margin-top:16px;padding:20px;border-radius:10px;background:var(--card2);border:1px solid var(--line)}
+.kv{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}
+.kv .k{font-weight:700;font-size:14px;color:var(--sub)}
+.achlist{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.ach{display:flex;gap:16px;padding:20px;border-radius:10px;background:var(--card2);border:1px solid var(--line);transition:.2s}
+.ach:hover{border-color:var(--line2)}
+.ach-ico{flex:none;width:42px;height:42px;border-radius:10px;display:grid;place-items:center;color:#fbbf24;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.35)}
+.ach-ico svg{width:22px;height:22px}
+.fp-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
+.fp-t{font-size:24px;margin-top:2px}
+.fp-r{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fp .pipe{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.fp .pipe{grid-template-columns:1fr}}
 .copied{font-size:13px;color:var(--green);min-height:18px;padding:0 14px 12px}
 footer{border-top:1px solid var(--line);background:var(--bar);backdrop-filter:blur(12px);padding:22px 0}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;font-size:13px;color:var(--muted)}
@@ -416,40 +438,73 @@ footer a:hover{color:var(--text)}
 
 <!-- PROJECTS -->
 <section class="view stack" id="v-projects">
-  <div><div class="label">03 / Projects</div><h2>Engineering Projects</h2></div>
-  <div class="box pad">
-    <div class="row"><div><h3>Anubhav — Interview Experience Hub</h3><div class="sub">MMMUT placement interview-experience portal</div></div><span class="pill b">Firebase · Vanilla JS</span></div>
-    <ul class="b">
-      <li>Built a college portal where seniors record detailed, <b>round-wise placement interview experiences</b> that pass an admin review before going public, so juniors know what was asked and how to prepare.</li>
-      <li>Implemented <b>college-email sign-up</b> with Firebase Authentication and a <b>7-step submission form</b> (Background → Preparation → Rounds → Mistakes → Resume → HR &amp; Offer → Advice) with dynamic rounds, auto-saved drafts, per-step validation and preview.</li>
-      <li>Built search with <b>9 filters</b>, company pages, an auto-generated 8-week preparation roadmap, a question bank, a Selected-vs-Rejected comparison and a <b>placement statistics</b> dashboard that uses only reviewed data. Built as a personal project; not an official MMMUT or T&amp;P website.</li>
-      <li>Created an <b>admin panel</b> with a review queue, management of drives, notices and companies, bulk Excel/CSV upload, editable site settings and JSON backup, plus a directory of <b>118 recruiters</b>.</li>
-      <li>Secured data with <b>Cloud Firestore rules</b> enforcing roles, field limits and the college-email domain, and HTML-escaped all user text. Responsive, mobile-first UI with dark and light modes.</li>
-    </ul>
-    <div class="badges"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Firebase Auth</span><span class="tag">Cloud Firestore</span><span class="tag">GitHub Pages</span></div>
-    <a class="link" href="https://github.com/gitsumit7" target="_blank" rel="noopener">View on GitHub ↗</a>
+  <div class="box pad pagehead">
+    <div class="label blue">Page / Engineering Systems</div>
+    <h2 class="big">Projects &amp; Full-Stack Architectures</h2>
+    <p class="lead">A placement interview-experience portal, a TypeScript issue-resolution platform, and a MERN healthcare booking system.</p>
   </div>
-  <div class="box pad">
-    <div class="row"><div><h3>ResolveHub — Issue Resolution Platform</h3><div class="sub">Full-stack TypeScript platform</div></div><span class="pill b">Full-Stack</span></div>
-    <ul class="b">
-      <li>Built a full-stack TypeScript platform for raising, tracking and resolving issues, with a React.js + Vite frontend and a Node.js REST API backend.</li>
-      <li>Structured the backend into controllers and authentication middleware, backed by PostgreSQL with scripts for schema initialisation and user setup.</li>
-      <li>Implemented email notifications and file uploads, with environment-based configuration for secure handling of credentials.</li>
-      <li>Designed a responsive UI with Tailwind CSS and reusable components, using React Context API for global state management.</li>
-    </ul>
-    <div class="badges"><span class="tag">React.js</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">Tailwind CSS</span></div>
-    <a class="link" href="https://github.com/gitsumit7" target="_blank" rel="noopener">View on GitHub ↗</a>
+
+  <div>
+    <div class="label">04 / Featured Engineering Work</div>
+    <h2 style="margin:4px 0 4px">Major Featured Platforms</h2>
+    <p class="sub" style="margin-bottom:14px">End-to-end platforms covering secured REST backends, relational and document data, and real-time Firebase apps.</p>
   </div>
+  <div class="box pad fp">
+    <div class="fp-top">
+      <div><div class="num">01.</div><h3 class="fp-t">Anubhav — Interview Experience Hub</h3><div class="pos-s">MMMUT Placement Interview Experience Portal · Academic / Independent Project</div></div>
+      <div class="fp-r"><span class="pill b">Web Platform</span><a class="btn" href="https://github.com/gitsumit7" target="_blank" rel="noopener">Source Repository ↗</a></div>
+    </div>
+    <div class="badges"><span class="pill g">7-Step Submission Form</span><span class="pill g">9-Filter Search</span><span class="pill g">118 Recruiters Directory</span><span class="pill g">Admin Review Workflow</span></div>
+    <p class="p">A college portal where seniors record detailed, round-wise placement interview experiences that pass an admin review before going public, so juniors know what was asked, how to prepare and which mistakes to avoid. A personal project, not an official MMMUT or T&amp;P website.</p>
+    <div class="g2" style="margin-top:14px">
+      <div class="cs"><div class="label blue">Frontend &amp; Product Engineering</div><ul class="b"><li><b>7-step form:</b> Background → Preparation → Rounds → Mistakes → Resume → HR &amp; Offer → Advice, with dynamic rounds, auto-saved drafts, per-step validation and preview.</li><li><b>Discovery:</b> search with 9 filters, company pages, an auto-generated 8-week prep roadmap, question bank and Selected-vs-Rejected comparison.</li><li><b>UX:</b> responsive mobile-first layout, dark and light modes, shareable filtered links and CSV exports.</li></ul></div>
+      <div class="cs"><div class="label blue">Backend &amp; Data Architecture</div><ul class="b"><li><b>Firebase Authentication</b> with college-email sign-up and email verification.</li><li><b>Cloud Firestore</b> with security rules enforcing roles, field limits and the college-email domain.</li><li><b>Admin panel:</b> review queue, drives / notices / companies management, bulk Excel/CSV upload and JSON backup.</li></ul></div>
+    </div>
+    <div class="label" style="margin-top:16px">Key Technical Achievements</div>
+    <ul class="checks"><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Built a complete multi-page app in vanilla JavaScript with a custom router and reusable components.</span></li><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Designed a placement statistics dashboard by company, year, branch and CGPA, using only reviewed data.</span></li><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Secured user content with Firestore rules and HTML-escaping of all user text.</span></li></ul>
+    <div class="label" style="margin-top:6px">Execution &amp; Request Architecture Flow</div>
+    <div class="pipe"><div><span>1</span>Student Login (Firebase Auth)</div><div><span>2</span>7-Step Experience Form</div><div><span>3</span>Firestore Write (Rules Check)</div><div><span>4</span>Admin Review Queue</div><div><span>5</span>Public Experience Pages</div><div><span>6</span>Search, Roadmaps &amp; Statistics</div></div>
+    <div class="badges" style="margin-top:14px"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Firebase Auth</span><span class="tag">Cloud Firestore</span><span class="tag">Firestore Rules</span><span class="tag">GitHub Pages</span></div>
+  </div>
+  <div class="box pad fp">
+    <div class="fp-top">
+      <div><div class="num">02.</div><h3 class="fp-t">ResolveHub</h3><div class="pos-s">Issue Resolution Platform</div></div>
+      <div class="fp-r"><span class="pill b">Full-Stack TypeScript</span><a class="btn" href="https://github.com/gitsumit7" target="_blank" rel="noopener">Source Repository ↗</a></div>
+    </div>
+    <div class="badges"><span class="pill g">React + Vite Frontend</span><span class="pill g">Node.js REST API</span><span class="pill g">PostgreSQL</span><span class="pill g">Email &amp; File Uploads</span></div>
+    <p class="p">A full-stack TypeScript platform for raising, tracking and resolving issues, with a React + Vite frontend, a Node.js REST API backend and a PostgreSQL database.</p>
+    <div class="g2" style="margin-top:14px">
+      <div class="cs"><div class="label blue">Frontend &amp; Product Engineering</div><ul class="b"><li>Responsive UI built with <b>Tailwind CSS</b> and reusable components.</li><li><b>React Context API</b> for global state management across pages.</li></ul></div>
+      <div class="cs"><div class="label blue">Backend &amp; Data Architecture</div><ul class="b"><li>Backend structured into <b>controllers</b> and <b>authentication middleware</b>.</li><li><b>PostgreSQL</b> with scripts for schema initialisation and user setup.</li><li><b>Email notifications</b>, <b>file uploads</b> and environment-based configuration for credentials.</li></ul></div>
+    </div>
+    <div class="label" style="margin-top:16px">Key Technical Achievements</div>
+    <ul class="checks"><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Built the full issue lifecycle (raise → track → resolve) end to end in TypeScript.</span></li><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Kept routes thin with controller and middleware layers for clean separation of concerns.</span></li><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Handled secrets through environment-based configuration instead of code.</span></li></ul>
+    <div class="label" style="margin-top:6px">Execution &amp; Request Architecture Flow</div>
+    <div class="pipe"><div><span>1</span>React + Vite Frontend</div><div><span>2</span>Node.js REST API</div><div><span>3</span>Auth Middleware</div><div><span>4</span>Controllers &amp; Business Logic</div><div><span>5</span>PostgreSQL Database</div><div><span>6</span>Email Notifications &amp; Files</div></div>
+    <div class="badges" style="margin-top:14px"><span class="tag">React.js</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">Tailwind CSS</span><span class="tag">Context API</span></div>
+  </div>
+  <div class="box pad fp">
+    <div class="fp-top">
+      <div><div class="num">03.</div><h3 class="fp-t">MediCare Connect</h3><div class="pos-s">Healthcare Appointment System</div></div>
+      <div class="fp-r"><span class="pill b">MERN Stack</span><a class="btn" href="https://github.com/gitsumit7" target="_blank" rel="noopener">Source Repository ↗</a></div>
+    </div>
+    <div class="badges"><span class="pill g">Doctor Discovery</span><span class="pill g">Online Booking</span><span class="pill g">Secured REST APIs</span><span class="pill g">Linked Data Models</span></div>
+    <p class="p">A full-stack MERN healthcare platform where patients can register, discover doctors and book appointments online, digitising the end-to-end appointment workflow.</p>
+    <div class="g2" style="margin-top:14px">
+      <div class="cs"><div class="label blue">Frontend &amp; Product Engineering</div><ul class="b"><li>Responsive <b>React.js</b> frontend for doctor search, patient registration and appointment booking.</li><li>Integrated with the backend through REST API calls.</li></ul></div>
+      <div class="cs"><div class="label blue">Backend &amp; Data Architecture</div><ul class="b"><li>RESTful APIs with <b>Node.js</b> and <b>Express.js</b> for authentication, secured routes, doctor listings and scheduling.</li><li><b>MongoDB</b> models with <b>Mongoose</b> for patient profiles, doctor availability and appointments.</li><li>Each appointment linked to its patient and doctor by reference.</li></ul></div>
+    </div>
+    <div class="label" style="margin-top:16px">Key Technical Achievements</div>
+    <ul class="checks"><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Digitised the full booking workflow from registration to confirmed appointment.</span></li><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Designed linked document models that keep patient and doctor queries simple.</span></li><li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span>Protected booking and profile routes behind authentication.</span></li></ul>
+    <div class="label" style="margin-top:6px">Execution &amp; Request Architecture Flow</div>
+    <div class="pipe"><div><span>1</span>Patient (React)</div><div><span>2</span>Express REST API</div><div><span>3</span>Authentication</div><div><span>4</span>Doctor Listing &amp; Availability</div><div><span>5</span>Appointment Scheduling</div><div><span>6</span>MongoDB (Mongoose)</div></div>
+    <div class="badges" style="margin-top:14px"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">REST APIs</span></div>
+  </div>
+
   <div class="box pad">
-    <div class="row"><div><h3>MediCare Connect — Healthcare Appointment System</h3><div class="sub">MERN stack platform</div></div><span class="pill b">MERN</span></div>
-    <ul class="b">
-      <li>Built a full-stack MERN healthcare platform where patients can register, discover doctors and book appointments online.</li>
-      <li>Engineered RESTful APIs with Node.js and Express.js covering authentication, secured routes, doctor listings and appointment scheduling.</li>
-      <li>Designed MongoDB models with Mongoose for patient profiles, doctor availability and appointments, linking each appointment to its patient and doctor.</li>
-      <li>Developed a responsive React.js frontend for doctor search, registration and booking, integrated through REST API calls.</li>
-    </ul>
-    <div class="badges"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span></div>
-    <a class="link" href="https://github.com/gitsumit7" target="_blank" rel="noopener">View on GitHub ↗</a>
+    <div class="row"><div><div class="label">12 / Open Source &amp; Code</div><h2 style="margin-top:4px">Public Repositories</h2><div class="sub">github.com/gitsumit7</div></div>
+      <a class="btn pri" href="https://github.com/gitsumit7" target="_blank" rel="noopener">Explore All on GitHub ↗</a></div>
+    <div class="g3" style="margin-top:16px"><a class="card" href="https://github.com/gitsumit7" target="_blank" rel="noopener"><div class="row"><h3>Anubhav — Interview Experience Hub</h3><span class="pill b">Web Platform</span></div><p class="p">Placement interview-experience portal for MMMUT with admin review, search, roadmaps and statistics.</p><div class="open">Open on GitHub ↗</div></a><a class="card" href="https://github.com/gitsumit7" target="_blank" rel="noopener"><div class="row"><h3>ResolveHub</h3><span class="pill b">Full-Stack TS</span></div><p class="p">Issue resolution platform with React + Vite, Node.js REST API and PostgreSQL.</p><div class="open">Open on GitHub ↗</div></a><a class="card" href="https://github.com/gitsumit7" target="_blank" rel="noopener"><div class="row"><h3>MediCare Connect</h3><span class="pill b">MERN</span></div><p class="p">Healthcare appointment system with doctor discovery and online booking.</p><div class="open">Open on GitHub ↗</div></a></div>
   </div>
 </section>
 
@@ -490,61 +545,133 @@ footer a:hover{color:var(--text)}
 
 <!-- ENGINEERING -->
 <section class="view stack" id="v-engineering">
-  <div><div class="label">05 / Engineering</div><h2>Skills &amp; Stack</h2></div>
-  <div class="g3">
-    <div class="card"><h3>Languages</h3><div class="badges"><span class="tag">C</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">SQL</span><span class="tag">Python</span></div></div>
-    <div class="card"><h3>Frameworks &amp; Libraries</h3><div class="badges"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Redux</span><span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span><span class="tag">Flutter</span></div></div>
-    <div class="card"><h3>Backend &amp; Databases</h3><div class="badges"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">REST APIs</span><span class="tag">Authentication</span></div></div>
-    <div class="card"><h3>Web Technologies</h3><div class="badges"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Responsive Design</span><span class="tag">Mobile-First</span><span class="tag">SEO</span><span class="tag">Accessibility</span></div></div>
-    <div class="card"><h3>Developer Tools</h3><div class="badges"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">AI-Assisted Dev Tools</span></div></div>
-    <div class="card"><h3>CS Fundamentals</h3><div class="badges"><span class="tag">DSA</span><span class="tag">OOPs</span><span class="tag">DBMS</span><span class="tag">Operating Systems</span><span class="tag">Computer Networks</span></div></div>
+  <div class="box pad pagehead">
+    <div class="label blue">Page / Systems Engineering</div>
+    <h2 class="big">Software Engineering &amp; System Design</h2>
+    <p class="lead">How I structure full-stack applications, the core CS foundations behind them, and my categorized technical tooling.</p>
+  </div>
+
+  <div class="box pad">
+    <div class="label">06 / System Design Methodology</div>
+    <h2 style="margin-top:4px">How I Think About Systems &amp; End-to-End Delivery</h2>
+    <p class="sub" style="margin-top:4px">Responsive clients kept separate from REST services, secured routes and well-modelled data stores.</p>
+    <div class="arch">
+      <div><div class="label" style="margin-bottom:8px">Architecture Layers</div><div class="tiers"><button class="tier on" data-i="0" type="button">01. Client Layer</button><button class="tier" data-i="1" type="button">02. API & Routing</button><button class="tier" data-i="2" type="button">03. Authentication & Security</button><button class="tier" data-i="3" type="button">04. Business Logic</button><button class="tier" data-i="4" type="button">05. Data Modelling</button><button class="tier" data-i="5" type="button">06. Database & Storage</button><button class="tier" data-i="6" type="button">07. Notifications & Files</button><button class="tier" data-i="7" type="button">08. Version Control & Deploy</button></div></div>
+      <div class="tierbox">
+        <div class="label blue">Selected Tier</div>
+        <h3 id="tName" style="margin-top:4px"></h3>
+        <div class="sub" id="tNum"></div>
+        <div class="label" style="margin-top:14px">Primary Technologies</div>
+        <p class="p" id="tTech" style="margin-top:4px"></p>
+        <div class="label" style="margin-top:14px">Engineering Rationale</div>
+        <p class="p" id="tWhy" style="margin-top:4px"></p>
+        <div class="badges"><span class="pill g">Clear contracts &amp; separated layers</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="label">07 / Technical Competence</div>
+    <h2 style="margin:4px 0 4px">Engineering Disciplines &amp; Tooling</h2>
+    <p class="sub" style="margin-bottom:14px">Stacks used across my projects: Anubhav, ResolveHub and MediCare Connect.</p>
+    <div class="g3">
+      <div class="card"><div class="num">Discipline 01</div><h3>Frontend Engineering</h3><p class="p">Responsive, accessible interfaces built from reusable components with predictable state.</p><div class="badges"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Redux</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span><span class="tag">HTML5 / CSS3</span><span class="tag">Mobile-First</span></div></div>
+      <div class="card"><div class="num">Discipline 02</div><h3>Backend Engineering</h3><p class="p">REST APIs with clean controllers, middleware-based auth and secured routes.</p><div class="badges"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">REST APIs</span><span class="tag">Auth Middleware</span><span class="tag">Firebase Auth</span><span class="tag">File Uploads</span><span class="tag">Email Notifications</span></div></div>
+      <div class="card"><div class="num">Discipline 03</div><h3>Data & Storage</h3><p class="p">Relational, document and real-time databases with schemas designed around the domain.</p><div class="badges"><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">Cloud Firestore</span><span class="tag">Firestore Rules</span><span class="tag">SQL</span></div></div>
+      <div class="card"><div class="num">Discipline 04</div><h3>Software Engineering & CS</h3><p class="p">Strong fundamentals and problem solving, practised weekly in contests.</p><div class="badges"><span class="tag">Data Structures & Algorithms (600+ Solved)</span><span class="tag">OOPs</span><span class="tag">DBMS</span><span class="tag">Operating Systems</span><span class="tag">Computer Networks</span></div></div>
+      <div class="card"><div class="num">Discipline 05</div><h3>Tools & Delivery</h3><p class="p">Version control, deployment and developer tooling used across every project.</p><div class="badges"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">GitHub Pages</span><span class="tag">Vercel</span><span class="tag">AI-Assisted Dev Tools</span></div></div>
+    </div>
+  </div>
+
+  <div class="box pad">
+    <div class="row"><div><div class="label">08 / Computer Science Foundations</div><h2 style="margin-top:4px">Computer Science &amp; Problem Solving</h2></div>
+      <a class="btn pri" href="https://leetcode.com/u/sumit_739/" target="_blank" rel="noopener">LeetCode Profile ↗</a></div>
+    <div class="badges" style="margin-top:14px"><span class="pill g">600+ DSA Problems Solved</span><span class="pill b">Competitive Coding</span></div>
+    <p class="sub" style="margin-top:8px">Solved across LeetCode · CodeChef &nbsp;|&nbsp; <b>Primary languages:</b> C++ · JavaScript</p>
+    <div class="g2" style="margin-top:16px"><div class="cs"><h3>Data Structures &amp; Algorithms</h3><p class="p">Arrays, Strings, Trees, Graphs, Dynamic Programming, Greedy, Binary Search, Two Pointers</p></div><div class="cs"><h3>Object-Oriented Programming (OOP)</h3><p class="p">Encapsulation, Inheritance, Polymorphism, Abstraction, classes and objects in C++</p></div><div class="cs"><h3>DBMS</h3><p class="p">Relational modelling, SQL queries, keys and normalisation, indexing and transactions</p></div><div class="cs"><h3>Operating Systems &amp; Networks</h3><p class="p">Processes, threads, scheduling, memory management; OSI/TCP-IP models, HTTP and REST</p></div></div>
+  </div>
+
+  <div>
+    <div class="label">Technical Tooling</div>
+    <h2 style="margin:4px 0 14px">Categorized Stack</h2>
+    <div class="g3"><div class="card"><h3>Languages</h3><div class="badges"><span class="tag">C</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">SQL</span><span class="tag">Python</span></div></div><div class="card"><h3>Frontend</h3><div class="badges"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Redux</span><span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span><span class="tag">Flutter</span></div></div><div class="card"><h3>Backend</h3><div class="badges"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">REST APIs</span><span class="tag">Authentication</span></div></div><div class="card"><h3>Databases &amp; Storage</h3><div class="badges"><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">Cloud Firestore</span></div></div><div class="card"><h3>Web</h3><div class="badges"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Responsive Design</span><span class="tag">SEO</span><span class="tag">Accessibility</span></div></div><div class="card"><h3>Tools &amp; Deployment</h3><div class="badges"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">GitHub Pages</span><span class="tag">Vercel</span></div></div></div>
   </div>
 </section>
 
 <!-- ACHIEVEMENTS -->
 <section class="view stack" id="v-achievements">
-  <div><div class="label">06 / Achievements</div><h2>Honors &amp; Achievements</h2></div>
-  <div class="g4">
-    <div class="box stat"><div class="v">600+</div><div class="l">LeetCode problems</div></div>
-    <div class="box stat"><div class="v">1,532</div><div class="l">LeetCode rating · 14 contests</div></div>
-    <div class="box stat"><div class="v">2★</div><div class="l">CodeChef · max 1,519</div></div>
-    <div class="box stat"><div class="v">23,742</div><div class="l">CodeChef global rank</div></div>
+  <div class="box pad pagehead">
+    <div class="label blue">Page / Honors &amp; Awards</div>
+    <h2 class="big">Honors &amp; Selected Achievements</h2>
+    <p class="lead">Competitive programming milestones, contest ratings, and software engineering certifications.</p>
   </div>
-  <div class="g2">
-    <div class="card">
-      <h3>LeetCode</h3><div class="kick">601 problems solved</div>
-      <div style="margin-top:14px">
-        <div class="bl"><span>Easy</span><span>259</span></div><div class="bar"><i style="width:43%;background:#34d399"></i></div>
-        <div class="bl"><span>Medium</span><span>301</span></div><div class="bar"><i style="width:50%;background:#fbbf24"></i></div>
-        <div class="bl"><span>Hard</span><span>41</span></div><div class="bar"><i style="width:7%;background:#f87171"></i></div>
+
+  <div class="box pad">
+    <div class="label">09 / Honors &amp; Awards</div>
+    <h2 style="margin-top:4px">Selected Achievements</h2>
+    <div class="achlist">
+      <div class="ach">
+        <div class="ach-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
+        <div>
+          <h3>600+ Problems Solved on LeetCode</h3>
+          <div class="badges" style="margin-top:6px"><span class="pill b">LeetCode</span><span class="pill g">Contest Rating 1,532</span></div>
+          <p class="p">Solved 600+ data structures and algorithms problems (259 Easy, 301 Medium, 41 Hard) and reached a contest rating of 1,532 across 14 rated contests.</p><a class="link" href="https://leetcode.com/u/sumit_739/" target="_blank" rel="noopener">View LeetCode profile ↗</a>
+        </div>
       </div>
-      <a class="link" href="https://leetcode.com/u/sumit_739/" target="_blank" rel="noopener">View LeetCode profile ↗</a>
-    </div>
-    <div class="card">
-      <h3>Certifications &amp; Ratings</h3>
-      <ul class="b">
-        <li><b>HackerRank Software Engineer Intern Certification</b> (Oct 2026): passed the role test on software engineering fundamentals.</li>
-        <li><b>CodeChef 2-Star</b> coder, highest rating 1,519 (Div. 3), global rank 23,742.</li>
-        <li><b>LeetCode</b> contest rating 1,532 across 14 contests.</li>
-      </ul>
+      <div class="ach">
+        <div class="ach-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
+        <div>
+          <h3>CodeChef 2-Star Coder</h3>
+          <div class="badges" style="margin-top:6px"><span class="pill b">CodeChef</span><span class="pill g">Max Rating 1,519</span></div>
+          <p class="p">Reached 2-star rating on CodeChef with a highest rating of 1,519 in Division 3 and a global rank of 23,742 through regular rated contests.</p>
+        </div>
+      </div>
+      <div class="ach">
+        <div class="ach-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
+        <div>
+          <h3>HackerRank Software Engineer Intern Certification</h3>
+          <div class="badges" style="margin-top:6px"><span class="pill b">HackerRank</span><span class="pill g">Role Certification · Oct 2026</span></div>
+          <p class="p">Passed HackerRank's Software Engineer Intern role certification test, which assesses problem solving, data structures and core software engineering fundamentals.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- EDUCATION -->
 <section class="view stack" id="v-education">
-  <div><div class="label">07 / Education</div><h2>Education &amp; Leadership</h2></div>
-  <div class="tl">
-    <div class="box pad">
-      <div class="row"><div><h3>Madan Mohan Malaviya University of Technology</h3><div class="sub">Bachelor of Technology in Information Technology</div></div><div class="meta">2024 — Present · Gorakhpur, UP</div></div>
-      <div class="badges"><span class="pill g">CGPA 7.5 / 10</span></div>
-      <p class="p">Coursework: Data Structures &amp; Algorithms, OOPs, DBMS, Operating Systems, Computer Networks.</p>
+  <div class="box pad pagehead">
+    <div class="label blue">Page / Academics &amp; Leadership</div>
+    <h2 class="big">Academic Credentials &amp; Leadership</h2>
+    <p class="lead">Engineering degree, core coursework, and student society leadership at MMMUT.</p>
+  </div>
+
+  <div class="box pad">
+    <div class="label">10 / Academic Credentials</div>
+    <h2 style="margin-top:4px">Education</h2>
+    <div class="edu">
+      <div class="row">
+        <div><h3>B.Tech in Information Technology</h3><div class="pos-s">Madan Mohan Malaviya University of Technology (MMMUT)</div></div>
+        <div class="pos-r"><span class="datepill">2024 — Present</span><div class="sub" style="font-size:13px;margin-top:6px">Gorakhpur, India</div></div>
+      </div>
+      <div class="kv"><span class="k">CGPA:</span><span class="pill g">7.5 / 10</span></div>
+      <div class="kv"><span class="k">Coursework:</span><div class="badges" style="margin-top:0"><span class="tag">Data Structures &amp; Algorithms</span><span class="tag">Object-Oriented Programming</span><span class="tag">Database Management Systems</span><span class="tag">Operating Systems</span><span class="tag">Computer Networks</span></div></div>
     </div>
   </div>
-  <div class="tl">
-    <div class="box pad">
-      <div class="row"><div><h3>Executive Member — CSSE Society</h3><div class="sub">MMMUT Gorakhpur</div></div><div class="meta">2025 — Present</div></div>
-      <p class="p">Help organise technical society activities, events and collaborative student initiatives.</p>
+
+  <div class="box pad">
+    <div class="label">11 / Leadership &amp; Community</div>
+    <h2 style="margin-top:4px">Initiatives &amp; Student Community</h2>
+    <div class="edu">
+      <div class="row">
+        <div><h3>Executive Member</h3><div class="pos-s">Computer Society of Software Engineers (CSSE) — MMMUT</div></div>
+        <div class="pos-r"><span class="datepill">2025 — Present</span><div class="sub" style="font-size:13px;margin-top:6px">Gorakhpur, India</div></div>
+      </div>
+      <p class="p">Part of the core team of the university's software engineering society, supporting technical activities for the student developer community.</p>
+      <ul class="b">
+        <li>Contributed to organising technical society activities and events.</li>
+        <li>Supported collaborative student initiatives within the CSSE community.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -568,14 +695,31 @@ footer a:hover{color:var(--text)}
 
 <!-- CONTACT -->
 <section class="view stack" id="v-contact">
-  <div><div class="label">08 / Contact</div><h2>Get in Touch</h2></div>
+  <div class="box pad pagehead">
+    <div class="label blue">Page / Connect</div>
+    <h2 class="big">Let's Build Together</h2>
+    <p class="lead">Open for SDE &amp; Full-Stack internship roles, from Gorakhpur, Uttar Pradesh or anywhere remotely.</p>
+  </div>
+
   <div class="box pad">
-    <p class="p" style="margin-top:0">I'm open to SDE and full-stack internship roles. Email is the best way to reach me.</p>
-    <div class="g2" style="margin-top:16px">
-      <div class="card"><div class="sub">Email</div><h3 style="word-break:break-all">sumitchaurasiya5154@gmail.com</h3><button class="link" id="copyBtn" type="button" style="text-align:left">Copy email</button><div class="copied" id="copied" style="padding:6px 0 0"></div></div>
-      <div class="card"><div class="sub">Phone</div><h3>+91 73929 25816</h3><div class="sub" style="margin-top:6px">Gorakhpur, Uttar Pradesh</div></div>
+    <div class="label">14 / Get in Touch</div>
+    <h2 style="margin-top:4px">Let's build something meaningful.</h2>
+    <p class="p">I'm available for software development, full-stack and frontend internship roles. Based in Gorakhpur, Uttar Pradesh and open to on-site, hybrid or remote opportunities.</p>
+    <div class="g2" style="margin-top:18px">
+      <div class="card">
+        <div class="label">Primary Email</div>
+        <h3 style="word-break:break-all;margin-top:6px">sumitchaurasiya5154@gmail.com</h3>
+        <div class="badges"><button class="btn pri" id="copyBtn" type="button">Copy Email</button><a class="btn" href="mailto:sumitchaurasiya5154@gmail.com">Compose ↗</a></div>
+        <div class="copied" id="copied" style="padding:8px 0 0"></div>
+      </div>
+      <div class="card">
+        <div class="label">Direct Phone / WhatsApp</div>
+        <h3 style="margin-top:6px">+91 73929 25816</h3>
+        <div class="badges"><a class="btn pri" href="tel:+917392925816">Call Directly ↗</a><a class="btn" href="https://wa.me/917392925816" target="_blank" rel="noopener">WhatsApp ↗</a><span class="tag">IST (UTC+5:30)</span></div>
+      </div>
     </div>
   </div>
+
   <div class="box btnrow">
     <a class="btn" href="https://github.com/gitsumit7" target="_blank" rel="noopener">GitHub ↗</a>
     <a class="btn" href="https://www.linkedin.com/in/sumit-chaurasiya5154/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -613,6 +757,9 @@ footer a:hover{color:var(--text)}
   }
   draw();addEventListener('resize',draw);
 
+  const TIERS=[{"n": "Client Layer", "tech": "React.js, TypeScript, Next.js, Tailwind CSS, Vanilla JS", "why": "Responsive, mobile-first interfaces built from reusable components, with global state via React Context API / Redux and accessible markup."}, {"n": "API & Routing", "tech": "Node.js, Express.js, REST APIs", "why": "Express routers and controllers expose clean REST endpoints; each route does one job and returns predictable JSON."}, {"n": "Authentication & Security", "tech": "Auth middleware, Firebase Authentication, Firestore security rules", "why": "Protected routes behind auth middleware, college-email sign-up, role checks in security rules, and HTML-escaping of all user text."}, {"n": "Business Logic", "tech": "Controllers, validation, multi-step workflows", "why": "Logic kept out of routes: controllers handle issue tracking, appointment booking and the 7-step submission flow with per-step validation."}, {"n": "Data Modelling", "tech": "Mongoose schemas, PostgreSQL schemas, Firestore collections", "why": "Models for patients, doctors and appointments linked by reference; schema-init and user-setup scripts so any environment rebuilds the same way."}, {"n": "Database & Storage", "tech": "PostgreSQL, MongoDB, Cloud Firestore", "why": "Relational data in PostgreSQL, document data in MongoDB, and real-time shared data in Firestore, chosen per project."}, {"n": "Notifications & Files", "tech": "Email notifications, file uploads, CSV export", "why": "ResolveHub sends email updates and accepts file uploads; Anubhav exports experiences and statistics as CSV."}, {"n": "Version Control & Deploy", "tech": "Git, GitHub, GitHub Pages, Vercel, env-based config", "why": "Feature-wise commits on GitHub, environment-based configuration for credentials, and static deploys on GitHub Pages / Vercel."}];
+  function showTier(i){const x=TIERS[i];document.getElementById('tName').textContent=String(i+1).padStart(2,'0')+'. '+x.n;document.getElementById('tNum').textContent='Tier '+String(i+1).padStart(2,'0');document.getElementById('tTech').textContent=x.tech;document.getElementById('tWhy').textContent=x.why;document.querySelectorAll('.tier').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));}
+  document.querySelectorAll('.tier').forEach(b=>b.addEventListener('click',()=>showTier(+b.dataset.i)));showTier(0);
   const views=['home','about','experience','projects','research','engineering','achievements','education','resume','contact'];
   function route(){
     let v=location.hash.replace('#','');if(!views.includes(v))v='home';
